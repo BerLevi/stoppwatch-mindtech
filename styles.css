@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --color-light: #e7e5e5;
+  --color-complementery-light: #f5b316;
+  --color-dark: #383636;
+  --color-complementery-dark: #646363;
+}
+
+body {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: "Lato", sans-serif;
+  line-height: 1.6;
+}
+
+.stopwatch-container {
+  width: 700px;
+  height: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-dark);
+  background-color: white;
+}
+
+.stopwatch-container h1 {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 50px;
+}
+
+.stopwatch-content {
+  text-align: center;
+  font-size: 150px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.timer-button {
+  color: var(--color-dark);
+  background-color: var(--color-complementery-light);
+  padding: 10px 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  font-size: 20px;
+}
