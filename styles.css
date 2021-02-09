@@ -21,7 +21,7 @@ body {
 }
 
 .stopwatch-container {
-  width: 700px;
+  width: 1000px;
   height: 450px;
   position: absolute;
   top: 50%;
@@ -55,4 +55,5 @@ body {
   border-radius: 5px;
   margin: 0 10px;
   font-size: 20px;
+  width: 8em;
 }
