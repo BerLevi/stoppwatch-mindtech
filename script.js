@@ -42,17 +42,21 @@ class Stopwatch{
            //set the status to true, so that we know the time has started
            stopwatchStatus = true;
         }
+
+        document.getElementById("start").innerHTML = "Started";
+
     }
 
     //pause method to pause the timer
     pause(){
         if(stopwatchStatus === true ){
+            //stop the setInterval function
             window.clearInterval(counter)
+
+            //change the start button to resume when the time is running
+            document.getElementById("start").innerHTML = "Resume";
             stopwatchStatus = false
         }
-               //change the start button to resume when the time is running
-               document.getElementById("start").innerHTML = "Resume";
-
     }
 
     //reset method to reset the stopwatch
@@ -67,16 +71,28 @@ class Stopwatch{
 
         //set the status to false, so the stopwatch can be started after it is reset
         stopwatchStatus = false
-        document.getElementById("stopwatch-time").innerHTML = "0h:0m:0s"
+        document.getElementById('stopwatch-time').innerHTML = "0h:0m:0s"
         document.getElementById("start").innerHTML = "Start";
 
     }
+
+    //method to split the time and store the current time value in a variable
+    split(){
+        console.log(currentTime.innerHTML)
+        const addSplitTime = document.getElementById('split-time-container-id')
+        addSplitTime.appendChild(currentTime)
+    }
+
 }
 
 //variables to store the time values
 let seconds = 0
 let minutes = 0
 let hours = 0
+
+//save the currently displayed time in a variable
+let currentTime = document.getElementById('stopwatch-time')
+let splitTimeText = document.getElementById('split-time')
 
 //variables to store the status of the setInterval function and the status of the Stopwatch, if started = true, if stopped = false
 let counter = null;
@@ -85,11 +101,11 @@ let stopwatchStatus = false;
 //variables to store connect the html buttons
 const startTimerButton = document.getElementById('start')
 const pauseTimerButton = document.getElementById('pause')
+const splitTimeButton = document.getElementById('split')
 const resetTimerButton = document.getElementById('reset')
 
 
-
-//create the stopwatch Object with the new keyword and pass in everything from the constructor
+//create the stopwatch Object with the new keyword, hook up all the variables and make them operate on the stopwatch object
 const stopwatch = new Stopwatch(seconds, minutes, hours)
 
 //call the start method every time the start button is clicked
@@ -102,6 +118,11 @@ startTimerButton.addEventListener('click', button =>{
 pauseTimerButton.addEventListener('click', button =>{
     stopwatch.pause()
 })
+
+//split the current time when the split button is clicked
+splitTimeButton.addEventListener('click', button =>{
+    stopwatch.split()
+} )
 
 //call the reset method to reset the timer every time the reset button is clicked
 resetTimerButton.addEventListener('click', button =>{
