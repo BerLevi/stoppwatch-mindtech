@@ -74,13 +74,27 @@ class Stopwatch{
         document.getElementById('stopwatch-time').innerHTML = "0h:0m:0s"
         document.getElementById("start").innerHTML = "Start";
 
+        timeAdded.remove()
+
     }
 
-    //method to split the time and store the current time value in a variable
+    //method to split the time 
     split(){
         console.log(currentTime.innerHTML)
-        const addSplitTime = document.getElementById('split-time-container-id')
-        addSplitTime.appendChild(currentTime)
+
+        //create an html p tag and save it in a variable
+        let newSplitTime = document.createElement('p')
+
+        //save the current time in a variable
+        let timeAdded = document.createTextNode(currentTime.innerHTML)
+
+        //add the newly created p tag to the current time
+        newSplitTime.appendChild(timeAdded)
+
+        const element = document.getElementById('split-time-container-id')
+
+        //create a p element in the split time container
+        element.appendChild(newSplitTime)
     }
 
 }
@@ -92,7 +106,6 @@ let hours = 0
 
 //save the currently displayed time in a variable
 let currentTime = document.getElementById('stopwatch-time')
-let splitTimeText = document.getElementById('split-time')
 
 //variables to store the status of the setInterval function and the status of the Stopwatch, if started = true, if stopped = false
 let counter = null;
